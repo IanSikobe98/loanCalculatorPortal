@@ -298,7 +298,7 @@ $(document).ready(function(){
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Interest Rate (%):</label>
-                                        <input type="number" class="form-control" name="interestRate" id="interestRate" placeholder="Enter the interest Rate" required="">
+                                        <input type="number"  step="0.01" class="form-control" name="interestRate" id="interestRate" placeholder="Enter the interest Rate" required="">
                                     </div>
                                 </div>
                             </div>
@@ -306,8 +306,8 @@ $(document).ready(function(){
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Loan Period:</label>
-                                        <input type="number" class="form-control" name="loanPeriod" id="loanPeriod" placeholder="please enter the loan Term" required="">
+                                        <label>Loan Period(Years):</label>
+                                        <input type="number" class="form-control" name="loanPeriod" id="loanPeriod"  step="0.01" placeholder="please enter the loan Term" required="">
                                     </div>
                                 </div>
                                     <!-- /.form-group -->
@@ -422,7 +422,7 @@ $(document).ready(function(){
                       <div class="row">
                           <div class="col-12 col-sm-6">
                               <div  id="others" class="form-group">
-                                  <button type="submit" name="submit" class="btn">Save</button>
+                                  <button type="submit" name="submit" class="btn">Send to Email</button>
                               </div> <!-- form group -->
                           </div>
                           <div class="col-12 col-sm-6">

@@ -156,7 +156,7 @@ $(document).ready(function() {
 
         var table = $('#myTable').DataTable();
         const data = table.rows().data().toArray();
-        var columns = ['Payment Number','Period Installments','Interest Payment','Principal Payment','Remaining Balance'];
+        var columns = ['Payment Number', 'Period Installments','Interest Payment','Principal Payment','Legal Fees','Processing fees','Excise Duty','Remaining Balance']; // Add more column headers if needed
         var dataAsHTML = '<table><tr>';
         for(var i in columns){
             dataAsHTML += '<th>'+columns[i]+'</th>';
@@ -233,7 +233,7 @@ $(document).ready(function() {
         const data = table.rows().data().toArray();
 
         // Define table columns and rows
-        const columns = ['Payment Number', 'Period Installments','Interest Payment','Principal Payment','Remaining Balance']; // Add more column headers if needed
+        const columns = ['Payment Number', 'Period Installments','Interest Payment','Principal Payment','Legal Fees','Processing fees','Excise Duty','Remaining Balance']; // Add more column headers if needed
 
         // AutoTable plugin to generate PDF
         doc.autoTable({
