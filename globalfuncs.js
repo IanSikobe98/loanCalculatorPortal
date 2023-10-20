@@ -113,7 +113,7 @@ $(document).ready(function() {
             });
 
         $.ajax({
-            url: 'http://localhost:8712/loan/api/calculate',
+            url: environment.calculate,
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json',
@@ -187,7 +187,7 @@ $(document).ready(function() {
         json['emailText'] = dataAsHTML;
 
         $.ajax({
-            url: 'http://localhost:8712/loan/email/sendemail',
+            url: environment.sendemail,
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json',

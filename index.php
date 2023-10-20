@@ -45,8 +45,9 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+    <script src ="environment.js" type="text/javascript"></script>
       <script src ="globalfuncs.js" type="text/javascript"></script>
-  <script src ="environment/location.js" type="text/javascript"></script>
+
 
           <script    src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
 <script src="https://jakubroztocil.github.io/rrule/dist/es5/rrule-tz.min.js"></script>
