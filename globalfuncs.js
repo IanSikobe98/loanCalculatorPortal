@@ -145,13 +145,16 @@ $(document).ready(function() {
 });
 
 function  displayData(response){
-    $('#myTable tr:not(:first)').remove();
+    // $('#myTable tr:not(:first)').remove();
     console.log("testting ..............");
     console.log(response);
     console.log(response.responseBody);
     var payments =JSON.parse(response.responseBody);
 
     var table = $('#myTable').DataTable();
+    if (table) {
+        table.clear().draw();
+    }
     for (var i in payments) {
         var items = [];
         payment = payments[i];

@@ -222,37 +222,43 @@ $(document).ready(function(){
                                     <div class="form-group">
                                         <label>Amount to Borrow:</label>
                                         <input type="number" name="loanAmount" class="form-control" id="loanAmount" placeholder="Please enter the loan Amount " required="">
-
                                     </div>
-                                    <!-- /.form-group -->
+                                </div>
+
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Interest Rate (%):</label>
                                         <input type="number" class="form-control" name="interestRate" id="interestRate" placeholder="Enter the interest Rate" required="">
-
                                     </div>
-                                    <!-- /.form-group -->
                                 </div>
+                            </div>
 
-                                <!-- /.col -->
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Loan Period:</label>
                                         <input type="number" class="form-control" name="loanPeriod" id="loanPeriod" placeholder="please enter the loan Term" required="">
                                     </div>
+                                </div>
                                     <!-- /.form-group -->
-                                    <div class="form-group">
-                                        <label>Payment Frequency:</label>
-                                        <select class="form-control select2" id="paymentFrequency" name ="paymentFrequency" style="width: 100%;">
-                                            <option value="4">Monthly</option>
-                                            <option value="3">Quarterly</option>
-                                            <option value="1">Annually</option>
-                                        </select>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Payment Frequency:</label>
+                                            <select class="form-control select2" id="paymentFrequency" name ="paymentFrequency" style="width: 100%;">
+                                                <option value="4">Monthly</option>
+                                                <option value="3">Quarterly</option>
+                                                <option value="1">Annually</option>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <!-- /.form-group -->
                                 </div>
-                                <!-- /.col -->
 
+                                    <!-- /.form-group -->
+
+
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Interest Type:</label>
@@ -261,21 +267,12 @@ $(document).ready(function(){
                                             <option value="1">Reducing Balance</option>
                                         </select>
                                     </div>
-
-
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Start Date:</label>
                                         <input type="Date" class="form-control" name="startDate" id="startDate" placeholder="Enter the start Date" required="">
                                     </div>
-
-                            </div>
-                            <!-- /.row -->
-
-
-                            <div class="row">
-
-
-                                    <!-- /.form-group -->
                                 </div>
                             </div>
                             <!-- /.row -->
