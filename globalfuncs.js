@@ -184,10 +184,10 @@ $(document).ready(function() {
             json[this.name] = this.value;
         });
 
-        json['emailtext'] = dataAsHTML;
+        json['emailText'] = dataAsHTML;
 
         $.ajax({
-            url: 'http://localhost:8712/loan/api/calculate',
+            url: 'http://localhost:8712/loan/email/sendemail',
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json',
@@ -272,6 +272,9 @@ function  displayData(response){
         items.push(payment.periodInstallment);
         items.push(payment.interestPayment);
         items.push(payment.principalPayment);
+        items.push(payment.legalFees);
+        items.push(payment.processingFees);
+        items.push(payment.exciseDuty);
         items.push(payment.remainingBalance);
         console.log("items ");
         console.log(items);

@@ -378,6 +378,9 @@ $(document).ready(function(){
 	 	    <th>Period Installments</th>
 	 	    <th>Interest Payment</th>
 	 	    <th>Principal Payment</th>
+            <th>Legal Fees</th>
+            <th>Processing Fees</th>
+            <th>Excise Duty</th>
 	 	    <th>Remaining Balance</th>
                 </tr>
             </thead>
@@ -412,7 +415,7 @@ $(document).ready(function(){
                           <div class="col-12 col-sm-6">
                               <div class="form-group">
                                   <label><b>Email Address</b></label>
-                                  <input type="text" id="email" class="form-control select2" placeholder="Enter your Email Address" name="email" required>
+                                  <input type="text" id="emailAddress" class="form-control select2" placeholder="Enter your Email Address" name="emailAddress" required>
                               </div> <!-- form group -->
                           </div> <!-- col -->
                       </div> <!-- row -->
