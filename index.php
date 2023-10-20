@@ -30,9 +30,16 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
 
-    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+
+
+
+
+    <script src="https://cdn.datatables.net/1.11.10/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.10/css/jquery.dataTa
 
 <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
   <!-- Google Font: Source Sans Pro -->
@@ -59,6 +66,69 @@
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+
+  .exportToPdf{
+      display: none;
+  }
+  .form-popup {
+      display: none;
+      position: fixed;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      bottom: 0;
+      height: 80%;
+      width: 80%;
+      overflow: auto;
+
+      border: 3px solid #f1f1f1;
+      z-index: 9;
+  }
+
+
+  /* Add styles to the form container */
+  .form-container {
+      max-width: 100%;
+      padding: 10px;
+      background-color: white;
+  }
+
+  /* Full-width input fields */
+  .form-container input[type=text], .form-container input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background: #f1f1f1;
+  }
+
+  /* When the inputs get focus, do something */
+  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+  }
+
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom:10px;
+      opacity: 0.8;
+  }
+
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+      background-color: red;
+  }
+
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+      opacity: 1;
+  }
 </style>
 
 
@@ -278,6 +348,11 @@ $(document).ready(function(){
                             <!-- /.row -->
                             <!-- /.form-group -->
                         </div>
+                        <div class="card-footer">
+                            <button type="submit" id="submit" name="submit" class="btn btn-primary">Submit</button>
+
+                        </div>
+                    </form>
                         <!-- /.col -->
                 </div>
                 <!-- /.row -->
@@ -285,21 +360,7 @@ $(document).ready(function(){
 
             <!-- /.card-body -->
 
-            <div class="card-footer">
-                <button type="submit" id="submit" name="submit" class="btn btn-primary">Submit</button>
 
-
-<!--                <div id="myModal" class="modal">-->
-<!---->
-<!--                    <div class="modal-content">-->
-<!--                        <span id="close" class="close">&times;</span>-->
-<!---->
-<!--                        <h6 id = "status" style="color:green;"></h6>-->
-<!--                        <h6 id = "status3" style="color:green;"></h6>-->
-<!---->
-<!--                    </div>-->
-
-                </div>
 
 
 
@@ -326,9 +387,14 @@ $(document).ready(function(){
 
 
 <!--</tbody>-->
-       
+
 </table>
 </div>
+
+          <div class="card-footer">
+              <button type="button" id="exportToPdf" name="exportToPdf" class="btn btn-primary exportToPdf"   >Export</button>
+              <button type="button" id="sendToEmail" name="sendToEmail" class="btn btn-primary exportToPdf"   >SendToEmail</button>
+          </div>
 <!--       <script type="text/javascript">-->
 <!--$(document).ready( function () {-->
 <!--    $('#myTable').DataTable();-->
@@ -337,7 +403,33 @@ $(document).ready(function(){
 <!-- </script>-->
 
 
+          <div class="form-popup" id="myModal">
+              <form id ="myModalForm"  class="form-container">
+                  <p><b>Enter Email to send to: </b></p>
 
+                  <div class="card-body">
+                      <div class="row">
+                          <div class="col-12 col-sm-6">
+                              <div class="form-group">
+                                  <label><b>Email Address</b></label>
+                                  <input type="text" id="email" class="form-control select2" placeholder="Enter your Email Address" name="email" required>
+                              </div> <!-- form group -->
+                          </div> <!-- col -->
+                      </div> <!-- row -->
+                      <div class="row">
+                          <div class="col-12 col-sm-6">
+                              <div  id="others" class="form-group">
+                                  <button type="submit" name="submit" class="btn">Save</button>
+                              </div> <!-- form group -->
+                          </div>
+                          <div class="col-12 col-sm-6">
+                              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                          </div> <!-- col -->
+
+                      </div> <!-- col -->
+
+              </form>
+          </div>
 
 
         </script>

@@ -142,6 +142,115 @@ $(document).ready(function() {
             }
         });
     });
+    $('#myModalForm').submit(function(e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        swal({
+            title: "Checking...",
+            text: "Please wait",
+            icon: "images/ajaxloader.gif",
+            iconHtml: 1500,
+            showConfirmButton: false,
+            allowOutsideClick: false
+        });
+
+        var table = $('#myTable').DataTable();
+        const data = table.rows().data().toArray();
+        var columns = ['Payment Number','Period Installments','Interest Payment','Principal Payment','Remaining Balance'];
+        var dataAsHTML = '<table><tr>';
+        for(var i in columns){
+            dataAsHTML += '<th>'+columns[i]+'</th>';
+        }
+        dataAsHTML +='</tr>';
+        for (let i = 0; i < data.length; i++) {
+            dataAsHTML += '<tr>';
+            for (let j = 0; j < data[i].length; j++) {
+                dataAsHTML += `<td>${data[i][j]}</td>`;
+            }
+            dataAsHTML += '</tr>';
+        }
+        dataAsHTML +='</table>'
+        console.log("html");
+        console.log(dataAsHTML);
+
+
+
+        var formData = {};
+        formData['data'] = $('#myModalForm').serializeArray();
+        console.log(formData['data'])
+        var json = {};
+
+        $.each(formData['data'], function() {
+            json[this.name] = this.value;
+        });
+
+        json['emailtext'] = dataAsHTML;
+
+        $.ajax({
+            url: 'http://localhost:8712/loan/api/calculate',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(json), // Convert the data to a JSON string
+            success: function(response) {
+                // Handle the success response from the server
+                console.log(response);
+                swal({
+                    title: 'Sucesss!',
+                    text: 'Success in sending email' +" !",
+                    icon: 'success',
+                    button: 'Close',
+                    timer: 1000
+                });
+
+            },
+            error: function(xhr, status, error) {
+                // Handle any errors that occur during the request
+                console.error(error);
+                swal({
+                    title: 'Error !',
+                    text: status,
+                    icon: 'error',
+                    button: 'Close',
+                });
+            }
+        });
+    });
+    $("#exportToPdf").click(function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Your code to generate the PDF using jsPDF
+        // const doc = new jsPDF();
+        // doc.text("Hello, PDF!", 10, 10);
+        // doc.save('datatable.pdf');
+
+
+
+        const doc = new jsPDF();
+
+        // Extract data from DataTable
+        const table = $('#myTable').DataTable();
+        const data = table.rows().data().toArray();
+
+        // Define table columns and rows
+        const columns = ['Payment Number', 'Period Installments','Interest Payment','Principal Payment','Remaining Balance']; // Add more column headers if needed
+
+        // AutoTable plugin to generate PDF
+        doc.autoTable({
+            head: [columns],
+            body: data,
+        });
+
+        // Save or display the PDF
+        doc.save('datatable.pdf');
+    });
+    $("#sendToEmail").click(function (event){
+        var modal = document.getElementById('myModal');
+        modal.style.display ="block";
+    });
+
+
+
 });
 
 function  displayData(response){
@@ -169,6 +278,34 @@ function  displayData(response){
 
         table.row.add(items).draw(false);
     }
+    $('#exportToPdf').css('display', 'inline-block')
+    $('#sendToEmail').css('display', 'inline-block')
+
+}
 
 
+function closeForm() {
+    document.getElementById("myModal").style.display = "none";
+}
+
+function exportTableToPDF() {
+    event.preventDefault();
+    console.log("printed")
+    const doc = new jsPDF();
+
+    // Extract data from DataTable
+    const table = $('#myTable').DataTable();
+    const data = table.rows().data().toArray();
+
+    // Define table columns and rows
+    const columns = ['Column 1', 'Column 2']; // Add more column headers if needed
+
+    // AutoTable plugin to generate PDF
+    doc.autoTable({
+        head: [columns],
+        body: data,
+    });
+
+    // Save or display the PDF
+    doc.save('datatable.pdf');
 }
